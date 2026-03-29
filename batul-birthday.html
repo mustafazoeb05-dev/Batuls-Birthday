@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Batul 🍂</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Nunito:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF5EE;
+    --warm-white: #FDF9F4;
+    --terracotta: #C4714A;
+    --terracotta-light: #D4896A;
+    --terracotta-pale: #F0DDD3;
+    --dusty-rose: #D4936E;
+    --brown-dark: #4A3728;
+    --brown-mid: #7A5C48;
+    --brown-light: #B89B8A;
+    --sage: #8A9E7E;
+    --sage-light: #C4D4BA;
+    --amber: #D4A853;
+    --amber-light: #F0D4A0;
+    --parchment: #F5EDD8;
+    --envelope-seal: #C4714A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Subtle grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* Falling leaves */
+  .leaves-container {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .leaf {
+    position: absolute;
+    top: -40px;
+    font-size: 18px;
+    animation: fall linear infinite;
+    opacity: 0.6;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(-40px) rotate(0deg) translateX(0); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(110vh) rotate(360deg) translateX(60px); opacity: 0; }
+  }
+
+  /* LANDING PAGE */
+  #landing {
+    position: fixed;
+    inset: 0;
+    background: var(--cream);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+
+  #landing.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .landing-deco {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    animation: floatDeco 3s ease-in-out infinite;
+  }
+
+  @keyframes floatDeco {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .landing-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 8vw, 3.5rem);
+    color: var(--brown-dark);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .landing-title em {
+    color: var(--terracotta);
+    font-style: italic;
+  }
+
+  .landing-subtitle {
+    font-family: 'Lora', serif;
+    font-size: clamp(0.95rem, 3vw, 1.15rem);
+    color: var(--brown-mid);
+    line-height: 1.8;
+    max-width: 380px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .landing-btn {
+    background: var(--terracotta);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 20px rgba(196, 113, 74, 0.3);
+  }
+
+  .landing-btn:hover {
+    background: var(--dusty-rose);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(196, 113, 74, 0.4);
+  }
+
+  .landing-taurus {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: var(--brown-light);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* MAIN APP */
+  #app {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1.2rem 4rem;
+  }
+
+  .app-header {
+    text-align: center;
+    padding: 3rem 0 2rem;
+  }
+
+  .app-header-deco {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .app-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    color: var(--brown-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .app-subtitle {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    color: var(--brown-mid);
+    font-style: italic;
+  }
+
+  /* COUNTDOWN */
+  .countdown-bar {
+    background: var(--parchment);
+    border-radius: 20px;
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0 2rem;
+    text-align: center;
+    border: 1px solid var(--amber-light);
+  }
+
+  .countdown-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--brown-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .countdown-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--terracotta);
+    line-height: 1;
+  }
+
+  .countdown-unit {
+    font-size: 0.8rem;
+    color: var(--brown-mid);
+    margin-top: 0.2rem;
+  }
+
+  /* LETTERS GRID */
+  .letters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  /* ENVELOPE CARD */
+  .envelope-card {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .envelope-card:hover .envelope-body {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(74, 55, 40, 0.15);
+  }
+
+  .envelope-card.locked {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .envelope-card.locked:hover .envelope-body {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(74, 55, 40, 0.08);
+  }
+
+  .envelope-card.opened .envelope-flap {
+    transform: rotateX(180deg);
+  }
+
+  .envelope-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 70%;
+  }
+
+  .envelope-body {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(74, 55, 40, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  /* Envelope base */
+  .env-base {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  /* Different envelope colors per day */
+  .env-color-1 { background: #F0DDD3; }
+  .env-color-2 { background: #E8D8C4; }
+  .env-color-3 { background: #F0E4D0; }
+  .env-color-4 { background: #EDD8CC; }
+  .env-color-5 { background: #E4D4C0; }
+
+  /* Envelope bottom triangle */
+  .env-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60%;
+  }
+
+  /* Envelope side triangles */
+  .env-left, .env-right {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 50%;
+  }
+
+  /* Envelope flap */
+  .envelope-flap {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 55%;
+    transform-origin: top center;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    z-index: 3;
+  }
+
+  .flap-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Seal */
+  .envelope-seal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    background: var(--terracotta);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: white;
+    z-index: 4;
+    box-shadow: 0 2px 8px rgba(196, 113, 74, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .envelope-card.opened .envelope-seal {
+    background: var(--sage);
+  }
+
+  /* Day label */
+  .day-label {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--brown-mid);
+    font-weight: 500;
+  }
+
+  .day-date {
+    font-size: 0.65rem;
+    color: var(--brown-light);
+    margin-top: 1px;
+  }
+
+  /* Lock icon */
+  .lock-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 5;
+    border-radius: 12px;
+  }
+
+  /* TODAY badge */
+  .today-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--terracotta);
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 3px 7px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(196,113,74,0.4);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 2px 8px rgba(196,113,74,0.4); }
+    50% { box-shadow: 0 2px 20px rgba(196,113,74,0.7); }
+  }
+
+  /* LETTER MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(74, 55, 40, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+  }
+
+  .modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-card {
+    background: var(--warm-white);
+    border-radius: 20px;
+    padding: 2rem 1.8rem;
+    max-width: 480px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 30px 80px rgba(74, 55, 40, 0.25);
+  }
+
+  .modal-overlay.active .modal-card {
+    transform: translateY(0) scale(1);
+  }
+
+  .modal-deco-top {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-day-label {
+    text-align: center;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--brown-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--amber-light), transparent);
+    margin: 1rem 0 1.5rem;
+  }
+
+  .modal-letter-text {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    color: var(--brown-dark);
+    line-height: 1.9;
+    white-space: pre-line;
+  }
+
+  .modal-signature {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--terracotta);
+    font-style: italic;
+    margin-top: 1.5rem;
+    text-align: right;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--terracotta-pale);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--brown-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .modal-close:hover {
+    background: var(--terracotta);
+    color: white;
+  }
+
+  /* Birthday special modal */
+  .modal-card.birthday {
+    background: linear-gradient(135deg, var(--parchment) 0%, var(--warm-white) 100%);
+    border: 2px solid var(--amber-light);
+  }
+
+  .birthday-stars {
+    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 0.5rem;
+    animation: twinkle 2s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  /* Scrollbar */
+  .modal-card::-webkit-scrollbar { width: 4px; }
+  .modal-card::-webkit-scrollbar-track { background: transparent; }
+  .modal-card::-webkit-scrollbar-thumb { background: var(--amber-light); border-radius: 2px; }
+
+  /* Footer */
+  .app-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--amber-light);
+  }
+
+  .footer-text {
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+    color: var(--brown-light);
+    font-style: italic;
+  }
+
+  /* Responsive */
+  @media (max-width: 400px) {
+    .letters-grid { grid-template-columns: repeat(3, 1fr); gap: 0.7rem; }
+    .modal-card { padding: 1.5rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Falling leaves -->
+<div class="leaves-container" id="leavesContainer"></div>
+
+<!-- LANDING PAGE -->
+<div id="landing">
+  <div class="landing-deco">🍂</div>
+  <h1 class="landing-title">Hey,<br><em>Batul</em> 🤍</h1>
+  <p class="landing-subtitle">
+    I made something just for you.<br><br>
+    26 days. 26 letters. One for each day until your birthday.<br><br>
+    No peeking ahead. 🍪
+  </p>
+  <button class="landing-btn" onclick="enterApp()">Open your gift 🎁</button>
+  <p class="landing-taurus">♉ Taurus Season is coming</p>
+</div>
+
+<!-- MAIN APP -->
+<div id="app" style="display:none;">
+  <div class="app-header">
+    <div class="app-header-deco">🍂✉️🍂</div>
+    <h1 class="app-title">Letters for Batul</h1>
+    <p class="app-subtitle">One letter a day, until the big day 🎂</p>
+  </div>
+
+  <div class="countdown-bar">
+    <div class="countdown-label">Days until your birthday</div>
+    <div class="countdown-number" id="daysLeft">—</div>
+    <div class="countdown-unit">days to go ♉</div>
+  </div>
+
+  <div class="letters-grid" id="lettersGrid"></div>
+
+  <div class="app-footer">
+    <p class="footer-text">"No matter what arises in life — I'm one call away." 🤍</p>
+  </div>
+</div>
+
+<!-- LETTER MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal-card" id="modalCard">
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// CONFIG
+// ============================================================
+const NOTIFICATION_EMAIL = "mustafazoeb05@gmail.com";
+const START_DATE = new Date('2025-03-29'); // Will be overridden to use Vancouver time
+const BIRTHDAY = new Date('2026-04-24');
+const GIRL_NAME = "Batul";
+const SENDER_NAME = "Mustafa";
+const BATUL_EMAIL = "batul.adamjee1@gmail.com"; // Add Batul's email here
+
+// Vancouver is PDT (UTC-7) in April
+function getVancouverDate() {
+  const now = new Date();
+  // Vancouver PDT = UTC-7
+  const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+  const vancouver = new Date(utc + (-7 * 3600000));
+  return vancouver;
+}
+
+function getVancouverDateOnly() {
+  const v = getVancouverDate();
+  return new Date(v.getFullYear(), v.getMonth(), v.getDate());
+}
+
+// All 26 letter dates (March 29 - April 24, 2026)
+function getLetterDates() {
+  const dates = [];
+  const start = new Date(2026, 2, 30); // March 30 2026
+  for (let i = 0; i < 26; i++) {
+    const d = new Date(start);
+    d.setDate(start.getDate() + i);
+    dates.push(d);
+  }
+  return dates;
+}
+
+// Format date nicely
+function formatDate(d) {
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+// ============================================================
+// LETTERS — 26 unique ones
+// ============================================================
+const letters = [
+  // Day 1 - March 30
+  `Dear Batul,
+
+Okay so I'm doing something I've never done before. Writing you a letter every single day until your birthday.
+
+No big reason. I just thought you deserve more than a happy birthday text on the day. So here we are. 26 days, 26 letters, one very determined person on the other side of the world.
+
+Nothing deep today. Just wanted to say hi and that this is happening whether you like it or not. 😄`,
+
+  // Day 2 - March 31
+  `Dear Batul,
+
+I keep thinking about the first time we met.
+
+On a boat. On a lake. For an interview. Of all the ways two people can meet for the first time, we somehow ended up on a boat on a lake.
+
+Most people are a little stiff in interview settings. You were just completely yourself. No performance, no awkwardness. Just Batul doing Batul.
+
+I remember thinking this person is going to be interesting to know. I was right.`,
+
+  // Day 3 - April 1
+  `Dear Batul,
+
+Happy April Fools Day 🎉
+
+I was going to write something dramatic like "this is the last letter, goodbye forever" but honestly that felt too mean and also a little embarrassing for me so I didn't.
+
+You're stuck with these until the 24th. That's just how it is now.
+
+Hope nobody pranked you today. And if they did I hope you got them back twice as hard.`,
+
+  // Day 4 - April 2
+  `Dear Batul,
+
+Something I've been thinking about lately is how rare it is to find someone who actually listens.
+
+Like properly listens. Not the kind where you can see their eyes glazing over and you know they're just waiting for their turn to talk. You actually absorb what people say and respond to it.
+
+It sounds like such a small thing but it's genuinely not that common. I think it's one of the reasons people feel comfortable around you without really knowing why.
+
+Anyway. Thought you should know that.`,
+
+  // Day 5 - April 3
+  `Dear Batul,
+
+Okay real talk.
+
+You explain things really well. Like unusually well. Most people either over-explain everything and lose you, or under-explain and leave you guessing. You somehow always land exactly in the middle.
+
+I don't know if you've ever been told that but it's true. Conversations with you actually go somewhere. That's not as common as it should be.
+
+Carry on. 😄`,
+
+  // Day 6 - April 4
+  `Dear Batul,
+
+No deep theme today. Just checking in.
+
+I hope Vancouver is being decent to you. I've heard the weather there has very strong opinions and doesn't really care what you think about them.
+
+Also I hope you've baked something recently. I feel like baking is one of those things that makes a regular Tuesday feel like it was actually worth something. Like you made a choice to do something good with your day.
+
+That's a nice quality honestly. Save me something. This is a formal request.`,
+
+  // Day 7 - April 5
+  `Dear Batul,
+
+One week in! Seven letters and I'm still going strong which honestly surprises me a little.
+
+Something I genuinely believe is that the best people are usually the ones who don't realise how much they mean to others. They're too busy just being themselves to stop and notice the effect they have on people.
+
+That's very much you by the way.
+
+Not saying it to be nice. Just saying it because it's true and someone should probably tell you every now and then.
+
+Week two starts tomorrow. Let's go. 🍂`,
+
+  // Day 8 - April 6
+  `Dear Batul,
+
+So you're into baking. 🍪
+
+That actually makes complete sense for you. Baking is patient and precise and requires actual care. It's not the kind of hobby you pick up if you're the type to rush through things.
+
+What's your go-to thing to make? I feel like everyone has that one thing that's just theirs. The recipe they can do without looking at anything.
+
+Whatever yours is I hope it turned out perfectly this week. And again, formal request, save me some.`,
+
+  // Day 9 - April 7
+  `Dear Batul,
+
+There's something about the way you're independent that I really respect.
+
+Some people are independent in a way that kind of keeps everyone at a distance. The energy reads as "I don't need anyone" and it feels a bit cold honestly.
+
+Yours is nothing like that. You clearly know who you are and you don't need anyone's approval for it, but you're still warm. Still genuinely interested in the people around you. Still present.
+
+That balance is actually really hard to pull off. You just do it naturally.`,
+
+  // Day 10 - April 8
+  `Dear Batul,
+
+Ten letters. We are officially a third of the way through this thing.
+
+Simple letter today. I'm genuinely glad we're friends. Not in a big dramatic way, just in the quiet real way that actually matters more. Some people come into your life and just make it better by being in it.
+
+You're one of those people.
+
+That's the whole letter. Sometimes that's enough. Happy day ten. 🍂`,
+
+  // Day 11 - April 9
+  `Dear Batul,
+
+Have you ever noticed how some people make a room feel heavier when they walk in and some people make it feel lighter?
+
+You're the second kind.
+
+I don't fully know what it is. Maybe it's how you carry yourself, maybe it's how you actually engage with people instead of just performing engagement. But there's something easy about being around you. Things feel a little more okay.
+
+Not everyone has that. It's worth knowing you do.`,
+
+  // Day 12 - April 10
+  `Dear Batul,
+
+Okay so I looked up Taurus stuff and I have to say the stars were not being subtle when they made you. ♉
+
+Grounded, loyal, patient, stubborn in the exact right way, great taste in everything, protective of the people they care about.
+
+I read all of that and went yeah that's just Batul. Word for word.
+
+Eight more letters after this one. Getting close. 😄`,
+
+  // Day 13 - April 11
+  `Dear Batul,
+
+13 is supposed to be unlucky. I've never bought that.
+
+I think 13 just has bad PR. Happens to the best things honestly.
+
+Nothing heavy today. Just me on the other side of the world hoping your week has been kind to you, hoping you've eaten something good, hoping Vancouver is at least pretending to cooperate.
+
+You good? I hope you're good.`,
+
+  // Day 14 - April 12
+  `Dear Batul,
+
+Halfway point! 14 letters done and 12 to go.
+
+Honest moment: when I started this I genuinely thought I'd run out of things to say around day five. I was a little worried about it.
+
+But I haven't. And I think that says something about you more than it says anything about me. You're the kind of person that gives people things to think about. Things worth writing down.
+
+You're interesting Batul. Not as a polite thing to say. Actually interesting. Worth paying attention to.
+
+Halfway there. 🍂`,
+
+  // Day 15 - April 13
+  `Dear Batul,
+
+I think about strength a lot and there's a specific kind that I think is the hardest to build.
+
+Not the tough, closed-off kind. Not the pretending-nothing-affects-you kind either. The kind that just keeps going. That feels things, processes them, and moves. That doesn't need to make a show of it.
+
+You have that kind. I can see it in how you talk about hard things. Not dramatic, not minimising, just honest. That kind of steadiness takes a long time to build.
+
+Either you worked really hard for it or you make it look very easy. Both options are impressive honestly.`,
+
+  // Day 16 - April 14
+  `Dear Batul,
+
+Random question I've been wondering about: what does your ideal Sunday look like?
+
+I have a feeling it involves something warm. Tea maybe. Something in the oven. A quiet afternoon where you're not doing anything useful and you don't feel guilty about it.
+
+I also think you're genuinely good at real rest. Not the guilty kind where you're half on your phone the whole time. Actual intentional rest where you chose to stop.
+
+Tell me I'm wrong. I don't think I'm wrong though. 😄`,
+
+  // Day 17 - April 15
+  `Dear Batul,
+
+17 days and still going. At this point I'm just impressed with myself.
+
+Something I want to say today: you handle the gap between who you are and who the world expects you to be really well. You don't shrink to fit and you don't perform to exceed either. You just show up as yourself and let that be enough.
+
+That sounds simple but it genuinely isn't. Most people spend years trying to get there. You just kind of do it.
+
+I respect that a lot.`,
+
+  // Day 18 - April 16
+  `Dear Batul,
+
+One week left until your birthday 🎂
+
+This project is almost done which is a weird feeling. I've gotten kind of used to writing these.
+
+I hope this last week is a good one. I hope something nice surprises you. I hope work is being reasonable and the weather is finally cooperating and someone makes you laugh properly at least once this week.
+
+You deserve a good run-up to a birthday. That's just the rule.`,
+
+  // Day 19 - April 17
+  `Dear Batul,
+
+Something I find genuinely admirable and I don't think I've said this directly: how consistent you are with people.
+
+Not just the people you're close to. Just people in general. You're not warmer to someone because they can do something for you. You're just decent to people, straightforwardly decent, regardless of what's in it for you.
+
+That sounds like it should be a baseline. It's really not. A lot of people fail that one without noticing. You pass it without even trying.`,
+
+  // Day 20 - April 18
+  `Dear Batul,
+
+20 letters. I'm a little proud of myself not going to lie.
+
+Here's what I know after 20 days of writing to you: you are one of the genuinely good people. Not perfect, nobody is, and perfect is kind of boring anyway. But good in the real sense. The kind that shows up in how you treat people and how you carry yourself and how you show up for the things that matter.
+
+That's worth saying on day 20. Probably worth saying more often than that.`,
+
+  // Day 21 - April 19
+  `Dear Batul,
+
+Simple letter today.
+
+I'm glad I know you. I'm glad our first meeting was as chaotic as it was because I think that set the tone for exactly what kind of friendship this would be.
+
+Weird. Warm. Real.
+
+Three more letters after this one. Almost at the finish line. 🍂`,
+
+  // Day 22 - April 20
+  `Dear Batul,
+
+Five days out from your birthday and I've been thinking about what I'd want for you this year.
+
+Not things. Just states of being.
+
+Peace. The kind that lives inside you and doesn't depend on everything going right.
+
+Clarity. About the things that matter and the things that really don't.
+
+And people who show up. Consistently. Without needing to be asked.
+
+You deserve all three. I hope this year actually delivers.`,
+
+  // Day 23 - April 21
+  `Dear Batul,
+
+April 20th was the start of Taurus season officially. ♉
+
+Which means the world has already started shifting into your energy. Grounded, warm, unhurried, knows what it's worth and doesn't negotiate on it.
+
+Four more days. I hope you can feel it. That thing that happens when everything starts to settle a little and feel like it's moving in the right direction.
+
+That's just the universe getting the stage ready. It does that for people like you.`,
+
+  // Day 24 - April 22
+  `Dear Batul,
+
+Three letters left.
+
+I've been writing to you for 24 days now and the most honest thing I can say is this: knowing you has been genuinely good for me. Not in some big dramatic way. In the quiet everyday way that actually counts more.
+
+You make the people around you better just by being the kind of person you are. Most people don't realise they do that. You probably don't either.
+
+Almost there. Two more after this. 🍂`,
+
+  // Day 25 - April 23
+  `Dear Batul,
+
+Two sleeps until your birthday 🎂
+
+I hope someone around you is already making a fuss. I hope there's a plan and a cake and people who love you gathered somewhere. You deserve the full thing, not a low-key "oh it's fine we don't need to do much."
+
+We absolutely need to do much.
+
+And if it ends up being a quiet one, that's okay too. Because you carry celebration with you. You don't need the occasion to feel it.
+
+Tomorrow is the last letter. See you then. 🤍`,
+
+  // Day 26 - BIRTHDAY April 24
+  `Dear Batul,
+
+Happy Birthday. 🎂
+
+26 letters. 26 days. And I meant every single word.
+
+I want to be honest with you in this last one because you deserve that more than you deserve another nice-sounding paragraph.
+
+I started this as a friend doing something thoughtful for someone he genuinely cares about. And all of that is true. Everything I wrote over these 26 days about how you listen, how you carry yourself, how you treat people, how strong you are, how good you are, that's all just what I actually think. No agenda, no performance.
+
+I told you how I felt last August. You were honest with me and I respect that more than you know. And what happened after, the fact that we got closer instead of further, that means something to me. It means you're the kind of person who doesn't let things get weird when they easily could. That's not nothing Batul. That's actually quite rare.
+
+I'm not writing this to reopen anything or make your birthday complicated. I'm writing it because you deserve honesty and because 26 days of letters felt like the right place to finally say: I think you are one of the most remarkable people I have ever met.  As a human being. As a friend. As someone I'm genuinely lucky to know.
+
+So here's what I want you to take from all of this:
+
+You are deeply seen. You are genuinely valued. And no matter what life looks like, no matter what changes or doesn't change, no matter how many kilometres sit between us, I am one call away. Always. No conditions. No expiry date.
+
+Happy birthday. I hope this year gives you everything you've earned. You've earned a lot.
+
+With love, from 12,552 kilometres away,`
+];
+
+// ============================================================
+// LETTER DATES
+// ============================================================
+const letterDates = getLetterDates();
+
+// ============================================================
+// ENVELOPE COLORS & ICONS
+// ============================================================
+const envColors = ['#F0DDD3','#E8D8C4','#F0E4D0','#EDD8CC','#E4D4C0','#EAD9CE','#F2E0D0','#E6D4C2','#EEE0CE','#E8D4C4'];
+const envIcons = ['🌸','🍂','✨','🍪','🌙','🌿','💫','🫶','🌾','☁️','🌷','🍁','✉️','🌻','🌙','🍂','💌','🌿','✨','🫶','🌸','🌾','💫','🍪','🌷','🎂'];
+
+// ============================================================
+// BUILD UI
+// ============================================================
+function buildLettersGrid() {
+  const grid = document.getElementById('lettersGrid');
+  const todayVancouver = getVancouverDateOnly();
+
+  letterDates.forEach((letterDate, i) => {
+    const isUnlocked = todayVancouver >= letterDate;
+    const isToday = todayVancouver.toDateString() === letterDate.toDateString();
+    const isBirthday = i === 25;
+    const isOpened = localStorage.getItem(`letter_opened_${i}`) === 'true';
+
+    const card = document.createElement('div');
+    card.className = `envelope-card ${isUnlocked ? '' : 'locked'} ${isOpened ? 'opened' : ''}`;
+    card.id = `card-${i}`;
+
+    const colorIdx = i % envColors.length;
+    const bgColor = envColors[colorIdx];
+    const darkerColor = shadeColor(bgColor, -15);
+    const icon = envIcons[i] || '🌸';
+
+    card.innerHTML = `
+      ${isToday ? '<div class="today-badge">Today</div>' : ''}
+      <div class="envelope-wrapper">
+        <div class="envelope-body">
+          <div class="env-base" style="background:${bgColor};">
+            <svg width="100%" height="100%" viewBox="0 0 140 98" preserveAspectRatio="none" style="position:absolute;inset:0;">
+              <!-- Bottom triangle -->
+              <polygon points="0,98 140,98 70,52" fill="${darkerColor}" opacity="0.5"/>
+              <!-- Left triangle -->
+              <polygon points="0,0 0,98 60,52" fill="${shadeColor(bgColor,-8)}" opacity="0.4"/>
+              <!-- Right triangle -->
+              <polygon points="140,0 140,98 80,52" fill="${shadeColor(bgColor,-8)}" opacity="0.4"/>
+            </svg>
+          </div>
+          <!-- Flap -->
+          <div class="envelope-flap" style="transform-origin: top center; ${isOpened ? 'transform: rotateX(180deg);' : ''}">
+            <svg width="100%" height="100%" viewBox="0 0 140 60" preserveAspectRatio="none">
+              <polygon points="0,0 140,0 70,55" fill="${shadeColor(bgColor,-10)}" opacity="0.9"/>
+            </svg>
+          </div>
+          <!-- Seal -->
+          <div class="envelope-seal" style="${isOpened ? 'background:var(--sage);' : ''}">${isOpened ? '✓' : (isBirthday ? '🎂' : icon)}</div>
+          ${!isUnlocked ? '<div class="lock-overlay">🔒</div>' : ''}
+        </div>
+      </div>
+      <div class="day-label">Day ${i + 1} ${isBirthday ? '🎂' : ''}</div>
+      <div class="day-date">${formatDate(letterDate)}</div>
+    `;
+
+    if (isUnlocked) {
+      card.addEventListener('click', () => openLetter(i));
+    }
+
+    grid.appendChild(card);
+  });
+}
+
+function shadeColor(color, percent) {
+  const num = parseInt(color.replace('#',''), 16);
+  const amt = Math.round(2.55 * percent);
+  const R = Math.min(255, Math.max(0, (num >> 16) + amt));
+  const G = Math.min(255, Math.max(0, (num >> 8 & 0x00FF) + amt));
+  const B = Math.min(255, Math.max(0, (num & 0x0000FF) + amt));
+  return '#' + (0x1000000 + R*0x10000 + G*0x100 + B).toString(16).slice(1);
+}
+
+// ============================================================
+// OPEN LETTER
+// ============================================================
+function openLetter(index) {
+  const isBirthday = index === 25;
+  const letterDate = letterDates[index];
+  const letter = letters[index];
+  const icon = envIcons[index] || '🌸';
+
+  // Mark as opened
+  const wasAlreadyOpened = localStorage.getItem(`letter_opened_${index}`) === 'true';
+  localStorage.setItem(`letter_opened_${index}`, 'true');
+
+  // Update card visually
+  const card = document.getElementById(`card-${index}`);
+  if (card) {
+    card.classList.add('opened');
+    const flap = card.querySelector('.envelope-flap');
+    if (flap) flap.style.transform = 'rotateX(180deg)';
+    const seal = card.querySelector('.envelope-seal');
+    if (seal) { seal.textContent = '✓'; seal.style.background = 'var(--sage)'; }
+  }
+
+  // Send notification if first time opening
+  if (!wasAlreadyOpened) {
+    sendNotification(index + 1, formatDate(letterDate));
+  }
+
+  // Show modal
+  const modalCard = document.getElementById('modalCard');
+  const modalContent = document.getElementById('modalContent');
+
+  if (isBirthday) {
+    modalCard.className = 'modal-card birthday';
+    modalContent.innerHTML = `
+      <div class="birthday-stars">✨ 🎂 ✨</div>
+      <div class="modal-day-label">April 24th · Happy Birthday Batul ♉</div>
+      <div class="modal-divider"></div>
+      <div class="modal-letter-text">${letter}</div>
+      <div class="modal-signature">— ${SENDER_NAME} 🤍</div>
+    `;
+  } else {
+    modalCard.className = 'modal-card';
+    modalContent.innerHTML = `
+      <div class="modal-deco-top">${icon}</div>
+      <div class="modal-day-label">Day ${index + 1} · ${formatDate(letterDate)}</div>
+      <div class="modal-divider"></div>
+      <div class="modal-letter-text">${letter}</div>
+      <div class="modal-signature">— ${SENDER_NAME} 🤍</div>
+    `;
+  }
+
+  document.getElementById('modalOverlay').classList.add('active');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) {
+    closeModalDirect();
+  }
+}
+
+function closeModalDirect() {
+  document.getElementById('modalOverlay').classList.remove('active');
+}
+
+// ============================================================
+// ============================================================
+// NOTIFICATION + REMINDER SYSTEM
+// ============================================================
+
+// Called when Batul opens a letter for the first time
+function sendNotification(dayNum, dateStr) {
+  fetch('https://formsubmit.co/ajax/' + NOTIFICATION_EMAIL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      subject: 'Batul opened Letter ' + dayNum + ' (' + dateStr + ')',
+      message: 'Batul just opened her letter for Day ' + dayNum + ' — ' + dateStr + '. She is reading it right now.',
+      _captcha: 'false'
+    })
+  }).catch(function() {});
+}
+
+// Check if Batul has missed opening today's letter and send her a reminder
+function checkAndSendReminder() {
+  if (!BATUL_EMAIL) return; // No email set, skip
+
+  var today = getVancouverDateOnly();
+  var letterDates = getLetterDates();
+
+  // Find today's letter index
+  var todayIndex = -1;
+  for (var i = 0; i < letterDates.length; i++) {
+    if (today.toDateString() === letterDates[i].toDateString()) {
+      todayIndex = i;
+      break;
+    }
+  }
+
+  if (todayIndex === -1) return; // Not within the 26-day window
+
+  var alreadyOpened = localStorage.getItem('letter_opened_' + todayIndex) === 'true';
+  var reminderSentKey = 'reminder_sent_' + todayIndex;
+  var alreadyReminded = localStorage.getItem(reminderSentKey) === 'true';
+
+  if (!alreadyOpened && !alreadyReminded) {
+    // Send reminder to Batul
+    fetch('https://formsubmit.co/ajax/' + BATUL_EMAIL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        subject: 'You have a letter waiting for you today',
+        message: 'Hey Batul! Your letter for Day ' + (todayIndex + 1) + ' (' + formatDate(letterDates[todayIndex]) + ') is waiting to be opened. Go check it — you deserve it today.',
+        _captcha: 'false'
+      })
+    })
+    .then(function() {
+      localStorage.setItem(reminderSentKey, 'true');
+    })
+    .catch(function() {});
+  }
+}
+
+// Run reminder check — waits 6 hours after midnight Vancouver time before nudging
+function scheduleReminderCheck() {
+  if (!BATUL_EMAIL) return;
+  var now = getVancouverDate();
+  var hours = now.getHours();
+  // Only send reminder if it's between 9am and 10pm Vancouver time
+  if (hours >= 9 && hours <= 22) {
+    checkAndSendReminder();
+  }
+  // Re-check every 2 hours
+  setTimeout(scheduleReminderCheck, 2 * 60 * 60 * 1000);
+}
+
+
+// ============================================================
+// COUNTDOWN
+// ============================================================
+function updateCountdown() {
+  const today = getVancouverDate();
+  const birthday = new Date(2026, 3, 24); // April 24 2026
+  const diff = birthday - today;
+  const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+  document.getElementById('daysLeft').textContent = Math.max(0, days);
+}
+
+// ============================================================
+// FALLING LEAVES
+// ============================================================
+function createLeaves() {
+  const container = document.getElementById('leavesContainer');
+  const leafEmojis = ['🍂', '🍁', '🌿', '🍃'];
+  for (let i = 0; i < 12; i++) {
+    const leaf = document.createElement('div');
+    leaf.className = 'leaf';
+    leaf.textContent = leafEmojis[Math.floor(Math.random() * leafEmojis.length)];
+    leaf.style.left = Math.random() * 100 + 'vw';
+    leaf.style.animationDuration = (8 + Math.random() * 10) + 's';
+    leaf.style.animationDelay = (Math.random() * 15) + 's';
+    leaf.style.fontSize = (12 + Math.random() * 10) + 'px';
+    container.appendChild(leaf);
+  }
+}
+
+// ============================================================
+// LANDING → APP
+// ============================================================
+function enterApp() {
+  var landing = document.getElementById('landing');
+  var app = document.getElementById('app');
+  // Show app immediately underneath
+  app.style.display = 'block';
+  // Fade out landing
+  landing.style.opacity = '0';
+  landing.style.visibility = 'hidden';
+  landing.style.transition = 'opacity 0.7s ease, visibility 0.7s ease';
+  setTimeout(function() {
+    landing.style.display = 'none';
+  }, 750);
+}
+
+// ============================================================
+// INIT
+// ============================================================
+createLeaves();
+updateCountdown();
+buildLettersGrid();
+setInterval(updateCountdown, 60000);
+scheduleReminderCheck();
+</script>
+</body>
+</html>
